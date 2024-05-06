@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  couchdb:
+    image: couchdb
+    ports:
+      - "5984:5984"
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=hola123
+    volumes:
+      - ./dbdata:/opt/couchdb/data
+
+  apache:
+    build:
+      context: ./apache
+    ports:
+      - "80:80"
+    depends_on:
+      - couchdb
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - apache
