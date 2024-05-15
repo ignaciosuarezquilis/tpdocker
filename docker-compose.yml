@@ -11,12 +11,12 @@ services:
     volumes:
       - ./dbdata:/opt/couchdb/data
 
-  apache:
+  backend:
     build:
-      context: ./apache
+      context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "3000:3000"
     depends_on:
       - couchdb
 
@@ -25,6 +25,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "80:80"
     depends_on:
-      - apache
+      - backend
+      - couchdb #esta bien??
