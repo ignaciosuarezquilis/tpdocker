@@ -1,6 +1,5 @@
 const express = require('express');
 const nano = require('nano')('http://admin:password@localhost:5984');
-let id = 0;
 
 let marcas = ["Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Mercedes-Benz", "Audi", "Volkswagen", "Tesla", "Subaru"]; 
 let colores = ['rojo', 'verde', 'blanco', 'negro', 'gris'];
@@ -16,14 +15,13 @@ const app = express();
 const db = nano.db.use('autos');
 
 app.get('/insertar', (req, res) => {
+    console.log("Entre")
     const data = {
-        id: id,
         marca: marcas[Math.floor(Math.random() * marcas.length)], 
         color: colores[Math.floor(Math.random() * colores.length)],
         anio: anios[Math.floor(Math.random() * anios.length)],
     };
-
-    id++;
+    console.log(data);
 
     db.insert(data, (err, body) => {
         if (err) {

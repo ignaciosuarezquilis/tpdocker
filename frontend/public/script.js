@@ -7,13 +7,13 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault();
   
       const brand = document.getElementById('brand').value;
-      const model = document.getElementById('model').value;
+      const color = document.getElementById('color').value;
       const year = parseInt(document.getElementById('year').value);
   
       // Crear objeto de automóvil
       const car = {
         brand: brand,
-        model: model,
+        color: color,
         year: year
       };
   
