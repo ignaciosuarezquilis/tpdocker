@@ -30,7 +30,7 @@ app.post('/insertarCampos', (req, res) => {
             return res.status(500).send('Error al insertar datos');
         }
         console.log('Datos insertados:', body);
-        res.json(body);
+        res.json(data);
         //res.send('Datos insertados correctamente');
     });
     
@@ -51,7 +51,7 @@ app.get('/insertarAleatorio', (req, res) => {
             return res.status(500).send('Error al insertar datos');
         }
         console.log('Datos insertados:', body);
-        res.json(body);
+        res.json(data);
         //res.send('Datos insertados correctamente');
     });
 

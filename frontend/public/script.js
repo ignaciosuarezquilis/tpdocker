@@ -1,4 +1,5 @@
 
+
 document.addEventListener('DOMContentLoaded', function() {
     const botonCampos = document.getElementById('botonCampos');
     const botonAleatorio = document.getElementById('botonAleatorio');
