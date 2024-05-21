@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             let tablaHTML = '<table><tr><th>Marca</th><th>Color</th><th>Año</th></tr>';
             data.forEach(function(fila) {
-                tablaHTML += '<tr><td>' + fila.marca + '</td><td>' + fila.color + '</td><td>' + fila.anio + '</td></tr>';
+                tablaHTML += '<tr><td>' + fila.brand + '</td><td>' + fila.color + '</td><td>' + fila.year + '</td></tr>';
             });
             tablaHTML += '</table>';
 
@@ -42,12 +42,14 @@ document.addEventListener('DOMContentLoaded', function() {
       };
   
       insertarCampos(car);
+      mostrarTabla();
     });
   
 
     botonAleatorio.addEventListener('click', function(event) {
       event.preventDefault();
       insertarAleatorio();     
+      mostrarTabla();
     });
 
     async function insertarCampos(car) {

@@ -1,6 +1,6 @@
 const cors = require ('cors');
 const express = require('express');
-const nano = require('nano')('http://admin:password@localhost:5984/');
+const nano = require('nano')('http://admin:password@couchdb:5984/');
 
 let marcas = ["Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Mercedes-Benz", "Audi", "Volkswagen", "Tesla", "Subaru"]; 
 let colores = ['rojo', 'verde', 'blanco', 'negro', 'gris'];
