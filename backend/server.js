@@ -1,6 +1,6 @@
 const cors = require ('cors');
 const express = require('express');
-const nano = require('nano')('http://admin:password@couchdb:5984/');
+const nano = require('nano')('http://admin:password@localhost:5984/');
 
 let marcas = ["Toyota", "Honda", "Ford", "Chevrolet", "BMW", "Mercedes-Benz", "Audi", "Volkswagen", "Tesla", "Subaru"]; 
 let colores = ['rojo', 'verde', 'blanco', 'negro', 'gris'];
@@ -54,6 +54,25 @@ app.get('/insertarAleatorio', (req, res) => {
         res.json(data);
         //res.send('Datos insertados correctamente');
     });
+
+});
+
+app.get('/mostrar', async(req, res) => {
+
+    try {
+        const response = await db.list({ include_docs: true });
+        //const documentos = response.rows.map(row => row.doc);
+
+        const documentos = response.rows.map(row => {
+            const { ["_id"]: _,["_rev"]: __, ...resto } = row.doc;
+            return resto;
+        });
+
+        res.json(documentos);
+
+      } catch (err) {
+        console.error('Error al obtener los datos', err);
+      }
 
 });
 
