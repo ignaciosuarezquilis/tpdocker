@@ -3,6 +3,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     const botonCampos = document.getElementById('botonCampos');
     const botonAleatorio = document.getElementById('botonAleatorio');
+
+
+    function mostrarTabla(){
+      fetch('http://localhost:3000/mostrar',{
+        method: 'GET',
+        headers: {'Content-Type':'application/json'}
+      })
+      .then(response => response.json())
+        .then(data => {
+            let tablaHTML = '<table><tr><th>Marca</th><th>Color</th><th>Año</th></tr>';
+            data.forEach(function(fila) {
+                tablaHTML += '<tr><td>' + fila.marca + '</td><td>' + fila.color + '</td><td>' + fila.anio + '</td></tr>';
+            });
+            tablaHTML += '</table>';
+
+            document.getElementById("tablaContainer").innerHTML = tablaHTML;
+        })
+        .catch(error => {
+            console.error('Error al obtener datos:', error);
+            alert('Error al obtener datos');
+        });
+    }
+
+    document.getElementById("mostrarBoton").addEventListener("click", mostrarTabla);
   
     botonCampos.addEventListener('click', function(event) {
       event.preventDefault();
@@ -11,21 +35,19 @@ document.addEventListener('DOMContentLoaded', function() {
       const color = document.getElementById('color').value;
       const year = parseInt(document.getElementById('year').value);
   
-      // Crear objeto de automóvil
       const car = {
         brand: brand,
         color: color,
         year: year
       };
   
-      // enviar datos al servidor
       insertarCampos(car);
     });
   
 
     botonAleatorio.addEventListener('click', function(event) {
       event.preventDefault();
-      insertarAleatorio();      // enviar datos al servidor
+      insertarAleatorio();     
     });
 
     async function insertarCampos(car) {
