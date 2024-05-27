@@ -1,7 +1,9 @@
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    const botonCampos = document.getElementById('botonCampos');
+
+
+  const botonCampos = document.getElementById('botonCampos');
     const botonAleatorio = document.getElementById('botonAleatorio');
 
 
@@ -26,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    mostrarTabla();
+    
     document.getElementById("mostrarBoton").addEventListener("click", mostrarTabla);
   
     botonCampos.addEventListener('click', function(event) {

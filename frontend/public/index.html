@@ -1,30 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insertar Automóvil</title>
+  <title>Listado de Automoviles</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>Insertar Automóvil</h1>
-    <form id="carForm">
-      <label for="brand">Marca:</label>
-      <input type="text" id="brand" name="brand" required><br><br>
-
-      <label for="model">Color:</label>
-      <input type="text" id="color" name="color" required><br><br>
-
-      <label for="year">Año:</label>
-      <input type="number" id="year" name="year" required><br><br>
-
-      <button id="botonCampos">Insertar</button>
-      <button id="botonAleatorio">Insertar Aleatorio</button>
-
-      <button id="mostrarBoton">Mostrar</button>
-      <div id="tablaContainer"></div>
-    </form>
+    <h1>Listado de Automoviles</h1>
+    <div class="columns">
+      <div class="list-column">
+        <div id="tablaContainer"></div>
+      </div>
+      <div class="form-column">
+        <h3>Insertar Automóvil</h3>
+        <form id="carForm" class="form">
+          <div class="form-group">
+            <label for="brand">Marca:</label>
+            <input type="text" id="brand" name="brand" required>
+          </div>
+          <div class="form-group">
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" required>
+          </div>
+          <div class="form-group">
+            <label for="year">Año:</label>
+            <input type="number" id="year" name="year" required>
+          </div>
+          <div class="button-group">
+            <button type="button" id="botonCampos">Insertar</button>
+            <button type="button" id="botonAleatorio">Insertar Aleatorio</button>
+            <button type="button" id="mostrarBoton">Mostrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
